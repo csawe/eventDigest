@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS events (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    event_type TEXT NOT NULL,
+    processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_latency FLOAT NOT NULL
+);

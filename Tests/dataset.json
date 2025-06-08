@@ -1,0 +1,1604 @@
+[
+  {
+    "event_type": "logout",
+    "user_id": 105,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "button",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "53%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "about",
+      "duration": 14.83
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 105,
+    "data": {
+      "scroll_depth": "38%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 105,
+    "data": {
+      "element": "button",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 103,
+    "data": {
+      "scroll_depth": "76%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "link",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 105,
+    "data": {
+      "page": "home",
+      "duration": 3.43
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 102,
+    "data": {
+      "page": "blog",
+      "duration": 7.37
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 102,
+    "data": {
+      "page": "pricing",
+      "duration": 4.28
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 23.52,
+      "currency": "USD",
+      "item": "course"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "button",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "72%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 105,
+    "data": {
+      "amount": 184.37,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 105,
+    "data": {
+      "amount": 22.11,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "manual"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 105,
+    "data": {
+      "scroll_depth": "88%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "image",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "image",
+      "page": "products"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 102,
+    "data": {
+      "scroll_depth": "45%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 105,
+    "data": {
+      "element": "link",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "blog",
+      "duration": 1.93
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 105,
+    "data": {
+      "element": "image",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 105,
+    "data": {
+      "amount": 120.93,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 101,
+    "data": {
+      "amount": 95.89,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "image",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "85%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 104,
+    "data": {
+      "page": "about",
+      "duration": 4.94
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 48.09,
+      "currency": "USD",
+      "item": "subscription"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 101,
+    "data": {
+      "amount": 60.55,
+      "currency": "USD",
+      "item": "subscription"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 103,
+    "data": {
+      "page": "home",
+      "duration": 2.73
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 104,
+    "data": {
+      "page": "home",
+      "duration": 1.57
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "link",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "link",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "blog",
+      "duration": 1.28
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "65%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 103,
+    "data": {
+      "page": "blog",
+      "duration": 1.02
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "86%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 105,
+    "data": {
+      "element": "link",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "78%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 105,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 101,
+    "data": {
+      "amount": 171.06,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 103,
+    "data": {
+      "scroll_depth": "76%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 105,
+    "data": {
+      "page": "blog",
+      "duration": 9.48
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 101,
+    "data": {
+      "amount": 102.23,
+      "currency": "USD",
+      "item": "subscription"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 101,
+    "data": {
+      "amount": 17.69,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 103,
+    "data": {
+      "method": "manual"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "link",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "home",
+      "duration": 4.86
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 102,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "56%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 102,
+    "data": {
+      "method": "manual"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 19.22,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 102,
+    "data": {
+      "element": "link",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 105,
+    "data": {
+      "amount": 58.32,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "blog",
+      "duration": 5.4
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 102,
+    "data": {
+      "amount": 49.79,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "button",
+      "page": "products"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "image",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 104,
+    "data": {
+      "amount": 116.22,
+      "currency": "USD",
+      "item": "course"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "manual"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 102,
+    "data": {
+      "amount": 175.19,
+      "currency": "USD",
+      "item": "subscription"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 105,
+    "data": {
+      "page": "about",
+      "duration": 1.92
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 101,
+    "data": {
+      "amount": 53.66,
+      "currency": "USD",
+      "item": "subscription"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 103,
+    "data": {
+      "scroll_depth": "57%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "blog",
+      "duration": 12.95
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 72.77,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 104,
+    "data": {
+      "page": "pricing",
+      "duration": 3.68
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 103,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 101,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 102,
+    "data": {
+      "element": "link",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "86%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 105,
+    "data": {
+      "amount": 65.34,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 105,
+    "data": {
+      "amount": 161.21,
+      "currency": "USD",
+      "item": "subscription"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 103,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 101,
+    "data": {
+      "amount": 159.52,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "link",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "74%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 104,
+    "data": {
+      "amount": 180.99,
+      "currency": "USD",
+      "item": "course"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 105,
+    "data": {
+      "element": "button",
+      "page": "products"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 133.48,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "button",
+      "page": "products"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 104,
+    "data": {
+      "page": "about",
+      "duration": 9.24
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "about",
+      "duration": 4.95
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 50.0,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 104,
+    "data": {
+      "amount": 51.72,
+      "currency": "USD",
+      "item": "course"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 158.28,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 105,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 103,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 102,
+    "data": {
+      "element": "link",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 102,
+    "data": {
+      "method": "manual"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "79%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "link",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "image",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 105,
+    "data": {
+      "page": "about",
+      "duration": 1.54
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 105,
+    "data": {
+      "element": "image",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "image",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 102,
+    "data": {
+      "element": "button",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 102,
+    "data": {
+      "page": "blog",
+      "duration": 3.1
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 103,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "manual"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "link",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 102,
+    "data": {
+      "element": "button",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "button",
+      "page": "products"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "69%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "71%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "image",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "10%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 105,
+    "data": {
+      "scroll_depth": "32%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "link",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 102,
+    "data": {
+      "scroll_depth": "60%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "link",
+      "page": "products"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "20%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "blog",
+      "duration": 12.29
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 104,
+    "data": {
+      "amount": 131.53,
+      "currency": "USD",
+      "item": "subscription"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 105,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 103,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 103,
+    "data": {
+      "page": "pricing",
+      "duration": 2.4
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "image",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 103,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 102,
+    "data": {
+      "element": "link",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "image",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 105,
+    "data": {
+      "scroll_depth": "98%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 162.6,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "image",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 104,
+    "data": {
+      "page": "about",
+      "duration": 10.8
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 102,
+    "data": {
+      "method": "manual"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "about",
+      "duration": 13.41
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 102,
+    "data": {
+      "scroll_depth": "21%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 103,
+    "data": {
+      "page": "pricing",
+      "duration": 12.56
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 105,
+    "data": {
+      "page": "home",
+      "duration": 14.99
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 105,
+    "data": {
+      "page": "blog",
+      "duration": 5.54
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 105,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "94%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 105,
+    "data": {
+      "scroll_depth": "40%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "image",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 102,
+    "data": {
+      "page": "about",
+      "duration": 6.05
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 166.66,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 104,
+    "data": {
+      "page": "pricing",
+      "duration": 13.49
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 105,
+    "data": {
+      "element": "button",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 101,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 102,
+    "data": {
+      "scroll_depth": "83%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "link",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 102,
+    "data": {
+      "page": "about",
+      "duration": 4.06
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 101,
+    "data": {
+      "amount": 24.5,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 105,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "link",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 172.07,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "70%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 105,
+    "data": {
+      "element": "image",
+      "page": "contact"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 105,
+    "data": {
+      "method": "session_expired"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 102,
+    "data": {
+      "scroll_depth": "10%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 102,
+    "data": {
+      "page": "blog",
+      "duration": 11.22
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "image",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 103,
+    "data": {
+      "scroll_depth": "54%",
+      "page": "blog"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 104,
+    "data": {
+      "element": "button",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 102,
+    "data": {
+      "element": "link",
+      "page": "products"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 102,
+    "data": {
+      "element": "image",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 105,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 103,
+    "data": {
+      "page": "about",
+      "duration": 6.12
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "94%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 105,
+    "data": {
+      "amount": 78.82,
+      "currency": "USD",
+      "item": "course"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 102,
+    "data": {
+      "amount": 160.06,
+      "currency": "USD",
+      "item": "course"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "58%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 103,
+    "data": {
+      "page": "pricing",
+      "duration": 13.55
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 101,
+    "data": {
+      "page": "pricing",
+      "duration": 14.27
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 101,
+    "data": {
+      "element": "link",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "33%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "99%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 102,
+    "data": {
+      "scroll_depth": "52%",
+      "page": "faq"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 103,
+    "data": {
+      "scroll_depth": "87%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "button",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 103,
+    "data": {
+      "method": "manual"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 103,
+    "data": {
+      "page": "home",
+      "duration": 3.88
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 30.11,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 102,
+    "data": {
+      "page": "pricing",
+      "duration": 4.57
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 104,
+    "data": {
+      "method": "timeout"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 103,
+    "data": {
+      "scroll_depth": "89%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 103,
+    "data": {
+      "amount": 181.49,
+      "currency": "USD",
+      "item": "subscription"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 103,
+    "data": {
+      "scroll_depth": "93%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 102,
+    "data": {
+      "element": "link",
+      "page": "services"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "link",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "39%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "logout",
+    "user_id": 103,
+    "data": {
+      "method": "manual"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 102,
+    "data": {
+      "page": "about",
+      "duration": 1.24
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 105,
+    "data": {
+      "amount": 155.44,
+      "currency": "USD",
+      "item": "membership"
+    }
+  },
+  {
+    "event_type": "click",
+    "user_id": 103,
+    "data": {
+      "element": "link",
+      "page": "products"
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 103,
+    "data": {
+      "page": "blog",
+      "duration": 10.82
+    }
+  },
+  {
+    "event_type": "view",
+    "user_id": 105,
+    "data": {
+      "page": "pricing",
+      "duration": 10.35
+    }
+  },
+  {
+    "event_type": "purchase",
+    "user_id": 101,
+    "data": {
+      "amount": 186.09,
+      "currency": "USD",
+      "item": "book"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 101,
+    "data": {
+      "scroll_depth": "83%",
+      "page": "home"
+    }
+  },
+  {
+    "event_type": "scroll",
+    "user_id": 104,
+    "data": {
+      "scroll_depth": "73%",
+      "page": "faq"
+    }
+  }
+]

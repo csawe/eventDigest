@@ -1,0 +1,124 @@
+services:
+  redis:
+    image: redis:7.0-alpine
+    ports:
+      - "6379:6379"
+  
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=events_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  event_receiver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "-u", "App/eventReceiver.py"]
+    ports:
+      - "8000:8000"
+      - "8002:8002"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_QUEUE=events_preprocessed
+    depends_on:
+      - redis
+
+  processing_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "-u", "App/processingWorker.py"]
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PYTHONBUFFERED=1
+    ports:
+     - "8003:8003"
+    depends_on:
+      - redis
+
+  persistence_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "-u", "App/persistenceWorker.py"]
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=events_db
+      - PYTHONBUFFERED=1
+    ports:
+      - "8004:8004"
+    depends_on:
+      - redis
+      - postgres
+  
+  event_publisher:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["uvicorn", "App.eventPublisher:app", "--host", "0.0.0.0", "--port", "8001"]
+    ports:
+      - "8001:8001"
+      - "8005:8005"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=events_db
+    depends_on:
+      - postgres
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    depends_on:
+      - event_publisher
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - prometheus
+
+  test_data_feeder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: >
+      sh -c "sleep 10 && python Tests/test1.py"
+    volumes:
+      - ./Test:/app/Test
+    depends_on:
+      - event_receiver
+      - processing_worker
+      - persistence_worker
+      - event_publisher
+
+volumes:
+  pgdata:
+  grafana-storage:

@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+requests
+redis
+python-dotenv
+psycopg2-binary
+prometheus_client
+prometheus-fastapi-instrumentator
+sse-starlette
+httpx

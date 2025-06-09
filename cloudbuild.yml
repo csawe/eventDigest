@@ -1,13 +1,18 @@
 substitutions:
-  _REGION: us-central1                     # ✅ Your Artifact Registry region
-  _REPO: precis-images                     # ✅ Your Artifact Registry repo name
-  _PROJECT_ID: sturdy-tenure-462314-h1     # ✅ Your GCP project ID
+  _REGION: region
+  _REPO: images
+  _PROJECT_ID: project_id
+  _POSTGRES_USER: postgres_user  # fill at trigger time or CI
+  _POSTGRES_PASSWORD: postgres_password  # fill at trigger time or CI
+  _POSTGRES_DB: postgres_db
+  _POSTGRES_HOST: postgres_host
+  _REDIS_HOST: redis_host
 
 steps:
-  # Build all services using shared Dockerfile but specific entrypoints
+  # Build all images using the shared Dockerfile
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver', '-f', 'Dockerfile', '.']
-  
+
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/processing_worker', '-f', 'Dockerfile', '.']
 
@@ -30,18 +35,20 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher']
 
-  # Deploy to Cloud Run with entry commands
+  # Deploy to Cloud Run with env vars and commands
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
       [
         'run', 'deploy', 'event-receiver',
         '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver',
+        '--platform', 'managed',
+        '--region', '${_REGION}',
+        '--allow-unauthenticated',
         '--command=python',
         '--args=App/eventReceiver.py',
-        '--region', '${_REGION}',
-        '--platform', 'managed',
-        '--allow-unauthenticated'
+        '--set-env-vars',
+        'PORT=8080,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},REDIS_HOST=${_REDIS_HOST}'
       ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -50,11 +57,13 @@ steps:
       [
         'run', 'deploy', 'processing-worker',
         '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/processing_worker',
+        '--platform', 'managed',
+        '--region', '${_REGION}',
+        '--allow-unauthenticated',
         '--command=python',
         '--args=App/processingWorker.py',
-        '--region', '${_REGION}',
-        '--platform', 'managed',
-        '--allow-unauthenticated'
+        '--set-env-vars',
+        'PORT=8080,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},REDIS_HOST=${_REDIS_HOST}'
       ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -63,11 +72,13 @@ steps:
       [
         'run', 'deploy', 'persistence-worker',
         '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/persistence_worker',
+        '--platform', 'managed',
+        '--region', '${_REGION}',
+        '--allow-unauthenticated',
         '--command=python',
         '--args=App/persistenceWorker.py',
-        '--region', '${_REGION}',
-        '--platform', 'managed',
-        '--allow-unauthenticated'
+        '--set-env-vars',
+        'PORT=8080,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},REDIS_HOST=${_REDIS_HOST}'
       ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -76,11 +87,13 @@ steps:
       [
         'run', 'deploy', 'event-publisher',
         '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher',
+        '--platform', 'managed',
+        '--region', '${_REGION}',
+        '--allow-unauthenticated',
         '--command=python',
         '--args=App/eventPublisher.py',
-        '--region', '${_REGION}',
-        '--platform', 'managed',
-        '--allow-unauthenticated'
+        '--set-env-vars',
+        'PORT=8080,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},REDIS_HOST=${_REDIS_HOST}'
       ]
 
 images:

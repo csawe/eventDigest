@@ -4,10 +4,8 @@ import redis
 import os
 import json
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request
-from prometheus_client import start_http_server, Counter, Histogram, Gauge
-import threading
-import uvicorn
+from fastapi import FastAPI, Request, Response
+from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST
 import time
 
 load_dotenv()
@@ -24,10 +22,10 @@ ERROR_COUNTER = Counter("event_receiver_errors_total", "Total event receiver err
 QUEUE_ENQUEUE_COUNTER = Counter("event_receiver_enqueue_total", "Total number of events enqueued to Redis")
 QUEUE_LENGTH_GAUGE = Gauge("event_receiver_queue_length", "Current length of the Redis events_preprocessed queue")
 
-def start_metrics_server():
-    start_http_server(8002)  # Prometheus metrics port
+# def start_metrics_server():
+#     start_http_server(8002)  # Prometheus metrics port
 
-threading.Thread(target=start_metrics_server, daemon=True).start()
+# threading.Thread(target=start_metrics_server, daemon=True).start()
 
 def enqueue_event(data: dict) -> dict:
     if "event_type" not in data:
@@ -53,6 +51,8 @@ async def receive_event(request: Request):
     except Exception as e:
         ERROR_COUNTER.labels(user_id=str(data.get("user_id", "unknown"))).inc()
         return {"error": str(e)}
+    
+@app.get("/metrics")
+def metrics():
+    return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -20,10 +20,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ["python", "-u", "App/eventReceiver.py"]
+    command: ["uvicorn", "App.eventReceiver:app", "--host", "0.0.0.0", "--port", "8000"]
     ports:
       - "8000:8000"
-      - "8002:8002"
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
@@ -72,7 +71,6 @@ services:
     command: ["uvicorn", "App.eventPublisher:app", "--host", "0.0.0.0", "--port", "8001"]
     ports:
       - "8001:8001"
-      - "8005:8005"
     environment:
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432

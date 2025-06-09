@@ -1,6 +1,5 @@
-from fastapi import FastAPI, Query, Request
-from prometheus_client import start_http_server, Counter, Histogram
-import threading
+from fastapi import FastAPI, Query, Request, Response
+from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -18,10 +17,6 @@ REQUEST_COUNTER = Counter("event_publisher_requests_total", "Total event publish
 REQUEST_ERROR_COUNTER = Counter("event_publisher_errors_total", "Total event publisher errors", ["user_id"])
 REQUEST_LATENCY = Histogram("event_publisher_request_latency_seconds", "Latency for event publisher requests (seconds)", ["user_id"])
 
-def start_metrics_server():
-    start_http_server(8005)  # Use a distinct port for this service
-
-threading.Thread(target=start_metrics_server, daemon=True).start()
 
 class DynamicCORSMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request, call_next):
@@ -105,6 +100,10 @@ def get_events(
     finally:
         elapsed = time.time() - start_time
         REQUEST_LATENCY.labels(user_id=user_id).observe(elapsed)
+
+@app.get("/metrics")
+def metrics():
+    return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
 async def fetch_prometheus_metric(metric: str, user_id: int):
     query = f'{metric}{{user_id="{user_id}"}}'

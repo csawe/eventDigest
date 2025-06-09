@@ -1,9 +1,10 @@
 substitutions:
-  _REGION: repo-region
-  _REPO: repo-name
-  _PROJECT_ID: your-project-id
+  _REGION: repo-region         # Replace with your Artifact Registry region, e.g., us-central1
+  _REPO: repo-name             # Replace with your Artifact Registry repo name
+  _PROJECT_ID: your-project-id # Replace with your GCP project ID
 
 steps:
+  # Build each service image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver', '-f', 'Dockerfile', '.']
 
@@ -16,6 +17,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher', '-f', 'Dockerfile', '.']
 
+  # Push images to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver']
 
@@ -28,6 +30,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher']
 
+  # Deploy each service to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
@@ -77,3 +80,6 @@ images:
   - '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/processing_worker'
   - '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/persistence_worker'
   - '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

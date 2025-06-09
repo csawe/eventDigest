@@ -6,9 +6,9 @@ substitutions:
   _POSTGRES_PASSWORD: password
   _POSTGRES_DB: events_db
   _POSTGRES_HOST: your-postgres-host 
-  _POSTGRES_PORT: 5432
+  _POSTGRES_PORT: port_num
   _REDIS_HOST: your-redis-host
-  _REDIS_PORT: 6379
+  _REDIS_PORT: port_num
   _REDIS_QUEUE: events_preprocessed
 
 steps:

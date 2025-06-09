@@ -31,7 +31,7 @@ QUEUE_LENGTH_GAUGE = Gauge("persistence_worker_queue_length", "Current length of
 END_TO_END_LATENCY = Histogram("end_to_end_event_latency_seconds", "Time from event reception to DB persistence", ["user_id"])
 
 def start_metrics_server():
-    start_http_server(8004)
+    start_http_server(8080)
 
 threading.Thread(target=start_metrics_server, daemon=True).start()
 

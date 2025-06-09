@@ -32,7 +32,7 @@ QUEUE_ENQUEUE_COUNTER = Counter("processing_worker_enqueue_total", "Total events
 QUEUE_OUT_LENGTH_GAUGE = Gauge("processing_worker_queue_out_length", "Current length of events_processed queue")
 
 def start_metrics_server():
-    start_http_server(8003)
+    start_http_server(8080)
 
 threading.Thread(target=start_metrics_server, daemon=True).start()
 

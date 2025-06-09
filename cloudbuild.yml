@@ -1,0 +1,85 @@
+substitutions:
+  _REGION: repo-region         # Replace with your Artifact Registry region, e.g., us-central1
+  _REPO: repo-name             # Replace with your Artifact Registry repo name
+  _PROJECT_ID: your-project-id # Replace with your GCP project ID
+
+steps:
+  # Build each service image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver', '-f', 'Dockerfile', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/processing_worker', '-f', 'Dockerfile', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/persistence_worker', '-f', 'Dockerfile', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher', '-f', 'Dockerfile', '.']
+
+  # Push images to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/processing_worker']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/persistence_worker']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher']
+
+  # Deploy each service to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      [
+        'run', 'deploy', 'event-receiver',
+        '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver',
+        '--platform', 'managed',
+        '--region', '${_REGION}',
+        '--allow-unauthenticated'
+      ]
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      [
+        'run', 'deploy', 'processing-worker',
+        '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/processing_worker',
+        '--platform', 'managed',
+        '--region', '${_REGION}',
+        '--allow-unauthenticated'
+      ]
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      [
+        'run', 'deploy', 'persistence-worker',
+        '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/persistence_worker',
+        '--platform', 'managed',
+        '--region', '${_REGION}',
+        '--allow-unauthenticated'
+      ]
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      [
+        'run', 'deploy', 'event-publisher',
+        '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher',
+        '--platform', 'managed',
+        '--region', '${_REGION}',
+        '--allow-unauthenticated'
+      ]
+
+images:
+  - '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver'
+  - '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/processing_worker'
+  - '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/persistence_worker'
+  - '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

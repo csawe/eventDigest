@@ -10,6 +10,7 @@ import asyncio
 import json
 import os
 import time
+import uvicorn
 
 app = FastAPI()
 
@@ -144,3 +145,7 @@ async def stream(request: Request):
             await asyncio.sleep(3)
 
     return EventSourceResponse(event_generator())
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))  # Fallback for local dev
+    uvicorn.run(app, host="0.0.0.0", port=port)

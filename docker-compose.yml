@@ -20,13 +20,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ["uvicorn", "App.eventReceiver:app", "--host", "0.0.0.0", "--port", "8000"]
+    command: ["python", "-u", "App/eventReceiver.py"]
     ports:
       - "8000:8000"
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - REDIS_QUEUE=events_preprocessed
+      - PORT=8000
     depends_on:
       - redis
 
@@ -39,6 +40,7 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - PYTHONBUFFERED=1
+      - PORT=8003
     ports:
      - "8003:8003"
     depends_on:
@@ -58,6 +60,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=events_db
       - PYTHONBUFFERED=1
+      - PORT=8004
     ports:
       - "8004:8004"
     depends_on:
@@ -68,7 +71,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ["uvicorn", "App.eventPublisher:app", "--host", "0.0.0.0", "--port", "8001"]
+    command: ["python", "-u", "App/eventPublisher.py"]
     ports:
       - "8001:8001"
     environment:
@@ -77,6 +80,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=events_db
+      - PORT=8001
     depends_on:
       - postgres
 

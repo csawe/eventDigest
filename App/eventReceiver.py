@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Request, Response
 from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST
 import time
+import uvicorn
 
 load_dotenv()
 
@@ -56,3 +57,6 @@ async def receive_event(request: Request):
 def metrics():
     return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))  # Fallback for local dev
+    uvicorn.run(app, host="0.0.0.0", port=port)

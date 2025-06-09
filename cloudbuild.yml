@@ -1,13 +1,13 @@
 substitutions:
-  _REGION: repo-region 
-  _REPO: repo-name 
-  _PROJECT_ID: your-project-id
+  _REGION: us-central1                     # ✅ Your Artifact Registry region
+  _REPO: precis-images                     # ✅ Your Artifact Registry repo name
+  _PROJECT_ID: sturdy-tenure-462314-h1     # ✅ Your GCP project ID
 
 steps:
-
+  # Build all services using shared Dockerfile but specific entrypoints
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver', '-f', 'Dockerfile', '.']
-
+  
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/processing_worker', '-f', 'Dockerfile', '.']
 
@@ -17,7 +17,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher', '-f', 'Dockerfile', '.']
 
-  # Push images to Artifact Registry
+  # Push images
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver']
 
@@ -30,52 +30,57 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher']
 
+  # Deploy to Cloud Run with entry commands
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
+    entrypoint: gcloud
     args:
       [
         'run', 'deploy', 'event-receiver',
         '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver',
-        '--platform', 'managed',
+        '--command=python',
+        '--args=App/eventReceiver.py',
         '--region', '${_REGION}',
-        '--allow-unauthenticated',
-        '--port', '8080'
+        '--platform', 'managed',
+        '--allow-unauthenticated'
       ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
+    entrypoint: gcloud
     args:
       [
         'run', 'deploy', 'processing-worker',
         '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/processing_worker',
-        '--platform', 'managed',
+        '--command=python',
+        '--args=App/processingWorker.py',
         '--region', '${_REGION}',
-        '--allow-unauthenticated',
-        '--port', '8080'
+        '--platform', 'managed',
+        '--allow-unauthenticated'
       ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
+    entrypoint: gcloud
     args:
       [
         'run', 'deploy', 'persistence-worker',
         '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/persistence_worker',
-        '--platform', 'managed',
+        '--command=python',
+        '--args=App/persistenceWorker.py',
         '--region', '${_REGION}',
-        '--allow-unauthenticated',
-        '--port', '8080'
+        '--platform', 'managed',
+        '--allow-unauthenticated'
       ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
+    entrypoint: gcloud
     args:
       [
         'run', 'deploy', 'event-publisher',
         '--image', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher',
-        '--platform', 'managed',
+        '--command=python',
+        '--args=App/eventPublisher.py',
         '--region', '${_REGION}',
-        '--allow-unauthenticated',
-        '--port', '8080'
+        '--platform', 'managed',
+        '--allow-unauthenticated'
       ]
 
 images:

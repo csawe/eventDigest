@@ -1,15 +1,17 @@
 substitutions:
-  _REGION: region
+  _REGION: us-central1
   _REPO: images
-  _PROJECT_ID: project_id
-  _POSTGRES_USER: postgres_user  # fill at trigger time or CI
-  _POSTGRES_PASSWORD: postgres_password  # fill at trigger time or CI
-  _POSTGRES_DB: postgres_db
-  _POSTGRES_HOST: postgres_host
-  _REDIS_HOST: redis_host
+  _PROJECT_ID: sturdy-tenure-462314-h1
+  _POSTGRES_USER: postgres
+  _POSTGRES_PASSWORD: password
+  _POSTGRES_DB: events_db
+  _POSTGRES_HOST: your-postgres-host 
+  _POSTGRES_PORT: 5432
+  _REDIS_HOST: your-redis-host
+  _REDIS_PORT: 6379
+  _REDIS_QUEUE: events_preprocessed
 
 steps:
-  # Build all images using the shared Dockerfile
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_receiver', '-f', 'Dockerfile', '.']
 
@@ -35,7 +37,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', '${_REGION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO}/event_publisher']
 
-  # Deploy to Cloud Run with env vars and commands
+
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
@@ -48,7 +50,7 @@ steps:
         '--command=python',
         '--args=App/eventReceiver.py',
         '--set-env-vars',
-        'PORT=8080,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},REDIS_HOST=${_REDIS_HOST}'
+        'PORT=8000,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},POSTGRES_PORT=${_POSTGRES_PORT},REDIS_HOST=${_REDIS_HOST},REDIS_PORT=${_REDIS_PORT},REDIS_QUEUE=${_REDIS_QUEUE}'
       ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -63,7 +65,7 @@ steps:
         '--command=python',
         '--args=App/processingWorker.py',
         '--set-env-vars',
-        'PORT=8080,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},REDIS_HOST=${_REDIS_HOST}'
+        'PORT=8003,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},POSTGRES_PORT=${_POSTGRES_PORT},REDIS_HOST=${_REDIS_HOST},REDIS_PORT=${_REDIS_PORT},REDIS_QUEUE=${_REDIS_QUEUE}'
       ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -78,7 +80,7 @@ steps:
         '--command=python',
         '--args=App/persistenceWorker.py',
         '--set-env-vars',
-        'PORT=8080,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},REDIS_HOST=${_REDIS_HOST}'
+        'PORT=8004,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},POSTGRES_PORT=${_POSTGRES_PORT},REDIS_HOST=${_REDIS_HOST},REDIS_PORT=${_REDIS_PORT}'
       ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -93,7 +95,7 @@ steps:
         '--command=python',
         '--args=App/eventPublisher.py',
         '--set-env-vars',
-        'PORT=8080,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},REDIS_HOST=${_REDIS_HOST}'
+        'PORT=8001,POSTGRES_USER=${_POSTGRES_USER},POSTGRES_PASSWORD=${_POSTGRES_PASSWORD},POSTGRES_DB=${_POSTGRES_DB},POSTGRES_HOST=${_POSTGRES_HOST},POSTGRES_PORT=${_POSTGRES_PORT}'
       ]
 
 images:
